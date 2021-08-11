@@ -1,6 +1,8 @@
 package ru.geekbrains.homeworks.list;
 
-public interface LinkedList<E> {
+import java.util.Iterator;
+
+public interface LinkedList<E> extends Iterable<E> {
 
     void insertFirst(E value);
 

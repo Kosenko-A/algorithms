@@ -1,5 +1,8 @@
 package ru.geekbrains.homeworks.list;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class SimpleLinkedListImpl<E> implements LinkedList<E> {
 
     protected Node<E> firstElement;
@@ -27,7 +30,25 @@ public class SimpleLinkedListImpl<E> implements LinkedList<E> {
 
     @Override
     public boolean remove(E value) {
-        return false;
+        Node<E> current = firstElement;
+        Node<E> previous = null;
+        while (current!=null) {
+            if (current.item.equals(value)) {
+                break;
+            }
+            previous = current;
+            current = current.next;
+        }
+        if (current == null) {
+            return false;
+        } else if (current == firstElement) {
+            removeFirst();
+        } else {
+            previous.next = current.next;
+        }
+        current.next = null;
+        size--;
+        return true;
     }
 
     @Override
@@ -78,6 +99,7 @@ public class SimpleLinkedListImpl<E> implements LinkedList<E> {
 
     }
 
+
     class Node<E> {
         E item;
         Node<E> next;
@@ -85,6 +107,30 @@ public class SimpleLinkedListImpl<E> implements LinkedList<E> {
         public Node(E item, Node<E> next) {
             this.item = item;
             this.next = next;
+        }
+    }
+
+    public Iterator<E> iterator() {
+        return new LinkedListIterator();
+    }
+
+    private class LinkedListIterator implements Iterator<E> {
+
+
+        @Override
+        public boolean hasNext() {
+            Node<E> current = firstElement;
+
+            return current != null;
+        }
+
+        @Override
+        public E next() {
+            Node<E> current = firstElement;
+            firstElement = firstElement.next;
+
+            return current.item;
+
         }
     }
 }
