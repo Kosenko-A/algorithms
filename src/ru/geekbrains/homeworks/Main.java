@@ -66,6 +66,8 @@ public class Main {
         deque.display();
         deque.removeLeft();
         deque.display();
+
+        System.out.println("lesson5");
     }
 
     public static Notebook[] sort (Notebook[] notebooks) {
