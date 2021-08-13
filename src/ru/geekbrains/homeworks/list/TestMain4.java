@@ -35,6 +35,12 @@ public class TestMain4 {
 //                break;
 //            }
         }
+
+        DequeToSideLinkedListImpl deq = new DequeToSideLinkedListImpl();
+        deq.insertFirst(6);
+        deq.insertFirst(5);
+        deq.insertLast(7);
+        deq.display();
     }
 
 }
