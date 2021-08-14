@@ -25,6 +25,7 @@ public class TestMain5 {
         Backpack backpack = new Backpack(8);
         backpack.findAllList(things);
         System.out.println(backpack.getBestThings());
+        System.out.println("6 урок");
 
     }
 
